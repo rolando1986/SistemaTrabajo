@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/codigoJavScrip.js"></script>
+	<title>Welcome</title>
+</head>
+<body>
+	{% if error is defined %}
+      <div class="mens alert alert-danger"> {{error}} </div>
+    {% endif %}
+    {% if alerta is defined%}
+      <div class="mens alert alert-info">{{alerta}} </div>
+    {% endif %}
+	<div class="container">
+		  <div class="row" id="pwd-container">
+		    <div class="col-md-4"></div>
+		    
+		    <div class="col-md-4">
+		      <section class="login-form">
+		        <form method="POST" action="./?action=login" role="login">
+		          <img src="images/logo1.png" class="img-responsive" />
+		          <input type="text" id="user" name="user" placeholder="user" class="form-control input-lg" value="RedCard_67" /> 
+		          <input type="password" id="password" name="password" class="form-control input-lg"  placeholder="Password" />
+		          <div class="pwstrength_viewport_progress"></div> 
+		          <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
+		          <div>
+		            <a href="#">Create account</a> or <a href="#">reset password</a>
+		          </div>
+		          
+		        </form>
+		        
+		        <div class="form-links">
+		          <a href="#">www.NowInnovation.com</a>
+		        </div>
+		      </section>  
+		      </div>
+		      
+		      <div class="col-md-4"></div>
+		      
+
+		  </div>
+		  
+		  <p>
+		    <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fbootsnipp.com%2Fiframe%2FW00op" target="_blank"><small>HTML</small><sup>5</sup></a>
+		    <br>
+		    <br>
+		    
+		  </p>     
+		  
+		  
+		  </div>
+    }
+</body>
+</html>

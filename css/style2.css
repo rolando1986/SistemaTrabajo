@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+/*
+over-ride "Weak" message, show font in dark grey
+*/
+body {
+	background: url(../images/fondo2.jpg) ;
+	background-size: cover;
+}

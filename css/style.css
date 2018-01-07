@@ -1,0 +1,295 @@
+@CHARSET "UTF-8";
+
+.progress-bar {
+    color: #333;
+} 
+* {
+    -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+    .form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+
+body {
+	
+	background: url(../images/fondo2.jpg) ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.login-form {
+	margin-top: 60px;
+}
+
+form[role=login] {
+	color: #5d5d5d;
+	background: #f2f2f2;
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	form[role=login] img {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 35px;
+	}
+	form[role=login] input,
+	form[role=login] button {
+		font-size: 18px;
+		margin: 16px 0;
+	}
+	form[role=login] > div {
+		text-align: center;
+	}
+	
+.form-links {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 50px;
+}
+	.form-links a {
+		color: #fff;
+	}
+/*FORMULARIOS Y MAS*/
+.img-responsive{
+	max-width:100%; 
+  	max-height:100%;
+  	margin:auto;
+ 	display:block;
+}
+.calendarioima{
+
+}
+.panel-default{
+	border-color: #000;
+	border-top-width: 2px;
+ 	border-right-width: 2px;
+  	border-bottom-width: 2px;
+  	border-left-width: 2px;
+}
+.panel-default>.panel-heading{
+	background-color: #ddd;
+}
+
+.titulo{
+	
+	padding-left: 0px;
+	margin-left:0%; 	
+	font-size: 18px;
+
+}
+.logueado{
+	padding-left: 0px;
+	margin-left:70%;
+	font-size: 18px;
+	word-wrap: break-word;
+}
+
+#Descripcion{
+	width: 55%;
+	resize: vertical;
+	max-height:200px;
+    min-height:90px;
+}
+
+.botonE{
+	font-size:16px;
+  background:#F2EAEA;
+}
+
+ul li label a{
+	color: red;
+}
+.AltaTarea ul { 
+  width: 100%; 
+  list-style-type: none; 
+  list-style-position: outside; 
+  margin: 0px; 
+  padding: 0px; 
+} 
+.AltaTarea li {
+  position: relative;
+  padding-left: 0%;
+  margin: 3% 0; 
+}
+.AltaTarea label { 
+  font-size: 16px;
+  text-align: left;
+  width: 40%; 
+  margin-top: 3px; 
+  display: inline-block; 
+  padding: 3px; 
+} 
+.AltaTarea input{ 
+  width: 40%;
+  padding: 10px 20px;
+  display: inline;
+  box-sizing: content-box;
+}
+.AltaTarea input { 
+  margin: 10px 0;
+  border: 1px solid #aaa; 
+  border-radius: 2px; 
+  padding-right: 50px; 
+   
+} 
+
+
+
+.ModificarTarea ul { 
+  width: 100%; 
+  list-style-type: none; 
+  list-style-position: outside; 
+  margin: 0px; 
+  padding: 0px; 
+} 
+.ModificarTarea li {
+  position: relative;
+  padding-left: 0%;
+  margin: 3% 0; 
+}
+.ModificarTarea label { 
+  font-size: 16px;
+  text-align: left;
+  width: 40%; 
+  margin-top: 3px; 
+  display: inline-block; 
+  padding: 3px; 
+} 
+.ModificarTarea input{ 
+  width: 40%;
+  padding: 10px 20px;
+  display: inline;
+  box-sizing: content-box;
+}
+.ModificarTarea input { 
+  margin: 10px 0;
+  border: 1px solid #aaa; 
+  border-radius: 2px; 
+  padding-right: 50px; 
+   
+}
+
+
+/* TABLAS */
+
+#tabla {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 5%;
+    overflow-x: auto
+}
+
+#tabla td, .tabla th {
+    border: 1px solid #ddd;
+    padding: 1%;
+
+}
+
+#tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+#tabla th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 8px;
+    text-align: center;
+    background-color: #000;
+    color: white;
+}
+
+
+#botonImagen2{
+  	margin-left: 10px;
+  	padding-left: 0px;
+}
+
+#botonImagen3{
+ 	margin-left:  10px;
+  	padding-left: 0%;
+}
+
+#tabla td{
+  text-align: left;
+  padding: 30px 20px ;
+  background: #FFFFFF;
+}
+
+/* === Form hints === */ 
+.form_hint { 
+  font-size: 14px; 
+  background: #d45252; 
+  border-radius: 3px 3px 3px 3px; 
+  color: white; 
+  margin-left: 8px; 
+  padding: 1px 6px; z-index: 999; 
+  position: absolute;  
+  display: none; 
+} 
+
+/* mensajes en los botones */
+#tabla .mensaje {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+    padding-left: 0px;
+    padding-right: 50px;
+}
+
+#tabla .mensaje .mensajeText {
+    visibility: hidden;
+    width: 70px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 1px 0;
+
+    /* Position */
+    position: absolute;
+    z-index: 1;
+}
+
+#tabla .mensaje:hover .mensajeText {
+    visibility: visible;
+}
+/*Formulario de usuario*/
+#tabla #formImagen{
+  box-sizing: content-box;
+}
+
+.logout{
+  display: none;
+}
+.home{
+  display: none;
+}
+.mens{
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+}
+.botonCheck{
+  display:none;
+}
+.auto{
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+}

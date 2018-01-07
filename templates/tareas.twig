@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<link href="css/style.css" rel="stylesheet">
+  	<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.min2.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="librerias/jquery/jquery.js"></script>
+    <script src="librerias/jquery/jquery-ui.js"></script>
+	<script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="librerias/jquery/jquery-ui.css">
+    <script src="js/codigoJavScrip.js"></script>
+   	<title>Tasks</title>
+   	
+</head>
+<body>
+	
+	<div class="container">
+		<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		<div class="navbar-header">
+		    <a class="navbar-brand" href="javascript:enviar_formularioHome()">System of Tasks</a>
+	    </div>
+		<ul class="nav navbar-nav">
+		<li><a href="javascript:enviar_formularioHome()">Home</a></li>
+        <form name="home" class="home" method="POST" action="./?action=Home" >
+	    	<button  name= "boton" type="submit"> Home </button>
+		</form>
+		<li><a href="#" data-toggle="modal" data-target="#addModal">Add Task </a></li>
+	    <div class="modal fade" id="addModal" role="dialog">
+			<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal">&times;</button>
+			    <h4 class="modal-title">Add Task (* Obligatorio)</h4>
+			</div>
+		    <div class="modal-body">
+	        	<form name="AltaTarea" action="./?action=AltaTarea" id="AltaTarea" class="AltaTarea" method="POST" > 
+			        <ul>
+			            <li> 
+			                <label>* Title:</label>
+			                <input type="text" id="titulo" name="titulo" placeholder="Trabajo en casa"  />
+			            </li>
+			            <li> 
+	                        <label>* Enter the date:</label>
+	                        <input type="text" name="fechaInicio" id="datepicker" readonly>
+	                        <img src="images/calendar.png" class="calendarioima" />
+                    	</li>
+						<li> 
+                			<label>* Description:</label>
+                			<textarea form ="AltaTarea"  id="Descripcion" name="Descripcion" maxlength="60" required> Corta el pasto en la vereda, y adentro, y finalizando atras. </textarea>
+            			</li>
+                   
+                     <li>  
+                     	 <label>                </label>
+                        <input class="botonE" id="botonE" name="botonE" type="submit" value="Add" />
+        			</li>
+        			</ul>	
+    			</form>
+	        </div>
+			<div class="modal-footer">
+			    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		    </div>
+		    </div>
+		    </div>
+		</div>
+        <li><a href="javascript:enviar_formulario()">Logout</a></li>
+        <form name="logout" class="logout" method="POST" action="./?action=cerrar" >
+	    	<button  name= "boton" type="submit"> Logout </button>
+		</form>
+		
+		
+	    </ul>
+		</div>
+		</nav>
+	</div>
+	<div class="container">
+		<div class="panel panel-default">
+			 <div class="panel-heading  ">
+			    <div class="titulo col-md-4">My Tasks</div>	
+			    {% if user is defined %}
+			    <div class="logueado ">logged in {{user}}</div>
+			    {% endif %}
+			</div>
+		</div>
+	</div>
+	{% if mensaje is defined%}
+      <div class="mens alert alert-info">{{mensaje}} </div>
+    {% endif %}
+    {%if vacio is defined%}
+    	<div class=" auto alert alert-info">{{vacio}}</div>
+    {% endif %}
+    {% if dato is defined %}
+ 	<div class="container">
+	<div id="tabla">
+    <table>
+        <tr>
+	       	<th>Accomplished</th>
+	        <th>Title</th>
+	        <th>Description</th>
+	        <th>Date</th>
+	        <th>Actions</th>
+    	</tr>
+    
+   	{% for tarea in dato %}
+		<tr>
+			<td>
+			{%if tarea.realizada == 0%}
+	        	<input id="checkMod" class="check" type="checkbox" name="realizada" value="1" readonly>
+	        {% else %}
+	        	<input id="checkMod" class="check" type="checkbox" name="realizada" value="1" readonly checked>
+	        {% endif %}			
+			</td>
+            <td>{{ tarea.titulo }}</td>
+            <td>{{ tarea.descripcion }}</td>
+            <td>{{ tarea.fecha }}</td>
+            <td>
+      		<div class="mensaje">
+                <form id="formModi" name="formModi" action="./?action=datosModificarTarea" method="POST">
+                    <input type="hidden" id="datosMod" name="datosMod" value="{{ tarea.idtarea }}" />
+                    <input id="botonDM" name="botonDM" type="image" src="./images/edit3.png">        
+                 </form>
+            <span class="mensajeText">Edit</span>
+            <div class="modal fade" id="editModal" role="dialog">
+			<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" >&times;</button>
+				<h4 class="modal-title">Edit Task (* Obligatorio)</h4>
+			</div>
+		    <div class="modal-body">
+	        <form action="./?action=ModificarTarea" id="ModificarTarea" class="ModificarTarea" method="POST" name="ModificarTarea"> 
+	       	{% if datosModTarea is defined %}
+				{% for d in datosModTarea %}
+				<input type="hidden" id="idModTarea" name="idModTarea" value="{{ d.idtarea }}" />
+	        <ul>
+	            <li> 
+	                <label>* Title:</label>
+	                <input type="text" id="tituloM" name="tituloM" placeholder="Trabajo en casa" value="{{d.titulo}}" />
+	            </li>
+	            <li>
+	            	<label> Current date </label>
+	            	<input type="date" class="fechaMuestra" id="fechaMuestra" name="fechaMuestra" value="{{d.fecha}}" readonly>
+	            </li>
+	            <li> 
+
+	                <label> Enter the date:</label>	      
+	                <input type="text" name="fechaInicio" id="datepicker2" readonly>
+	                <img src="images/calendar.png" class="calendarioima" />
+	            </li>
+
+				<li> 
+        			<label>* Description:</label>
+        			<textarea form ="ModificarTarea"  id="Descripcion" name="Descripcion" maxlength="60" value="" required>{{d.descripcion}}</textarea>	
+    			
+
+	            	<label>Accomplished</label>
+	              	{%if d.realizada == 0%}
+	              		<input id="checkMod" class="check" type="checkbox" name="realizada" value="1">
+	              	{% else %}
+	              		<input id="checkMod" class="check" type="checkbox" name="realizada" value="1" checked>
+	              	{% endif %}
+	             	 
+	            	<label>                </label>
+	                <input class="botonE" id="botonE" name="botonE" type="submit" value="Save" />
+				</li>
+				</ul>
+					{% endfor %}
+	    	{% endif %}	
+			</form>
+			<div class="modal-footer">
+			    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		    </div>
+	        </div>
+			</div>
+			</div>
+			</div> 
+			</div>  
+            <div class="mensaje">
+                <form id="formImagen" name="formImagen" action="./?action=EliminarTarea" method="POST" onsubmit="return confirm('Are you sure to eliminate it?');">
+      	            <input type="hidden" id="Eliminar" name="Eliminar" value="{{ tarea.idtarea }}" />
+                    <input id="botonImagen3" name="botonEli" type="image" src="./images/remove.png" alt="Submit" value="{{ tarea.idtarea }}">
+                    <span class="mensajeText">Remove</span>
+                </form>
+            </div>            
+            </td>
+        </tr>
+    {% endfor %}
+    {% endif %}       
+    </table>
+
+
+    </div>
+    </div>
+
+	<script >
+   		
+   		if("{{varM}}" == 1){
+			$("#editModal").modal();
+		}
+   	</script>       
+</body>
+</html>
